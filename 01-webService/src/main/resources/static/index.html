@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Страница пользователей</title>
+
+    <script src="/webjars/jquery/2.2.4/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/1.1.2/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/2.3.3-1/stomp.min.js"></script>
+    <script src="/app.js">
+    </script>
+</head>
+
+<body>
+<br/>
+<div>
+    <button id="connect" onclick="connect()">Connect</button>
+    <button id="disconnect" onclick="disconnect()" disabled="disabled">Disconnect</button>
+</div>
+
+<form id="create-form" accept-charset="utf-8">
+    <h1>Create new user:</h1>
+    <table style="width: 350px; border: solid 0px;">
+        <td><label>Name </label></td>
+        <td><input type="text" id="userName" value="" placeholder="Enter name"></td>
+        <tr></tr>
+        <td><label>Password </label></td>
+        <td><input type="text" id="userPassword" value="" placeholder="Enter password"></td>
+        <tr></tr>
+        <tr></tr>
+        <td><label>E-mail </label></td>
+        <td><input type="text" id="userEmail" value="" placeholder="Enter e-mail"></td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendRegister" onclick="sendMsgRegister()">Add</button>
+        </td>
+        <td>
+            <button type="button" id="sendShowAll" onclick="sendMsgAll()">Refresh/Show all</button>
+        </td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendUpdate" onclick="sendMsgUpdate()">Update</button>
+        </td>
+        <tr></tr>
+        <td>
+            <button type="button" id="sendDelete" onclick="sendMsgDelete()">Delete (by name)</button>
+        </td>
+    </table>
+</form>
+<br/>
+<div id="usersList" style="display: none">
+    <h1>List of users:</h1>
+    <table style="width: 500px; border: solid 2px;" id="usersTable">
+        <thead>
+        <tr>
+            <td style="width: 50px">Id</td>
+            <td style="width: 100px">Name</td>
+            <td style="width: 100px">Password</td>
+            <td style="width: 100px">E-mail</td>
+        </tr>
+        </thead>
+        <tbody id="usersStr">
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
